@@ -1,0 +1,26 @@
+{
+  "name": "Dewiza Pizza Cafe",
+  "short_name": "Dewiza Pizza",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#FAFAF9",
+  "theme_color": "#F90B0C",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "assets/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icons/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}

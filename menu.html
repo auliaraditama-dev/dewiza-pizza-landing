@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Katalog Lengkap Menu - Dewiza Pizza Cafe</title>
+    <meta
+      name="description"
+      content="Eksplorasi seluruh daftar varian pizza, minuman segar, dan makanan pendamping khas Dewiza Pizza Cafe."
+    />
+    <link rel="manifest" href="manifest.json" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png" />
+    <meta name="theme-color" content="#e63946" />
+
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="https://unpkg.com/lucide@latest"></script>
+  </head>
+  <body>
+    <header class="header">
+      <div class="container header-container">
+        <a href="index.html" class="logo-link">
+          <img
+            src="assets/logo/logo.webp"
+            alt="Dewiza Pizza Cafe Logo"
+            class="logo-img logo-dark"
+          />
+          <img
+            src="assets/logo/logo.webp"
+            alt="Dewiza Pizza Cafe Logo Light"
+            class="logo-img logo-light"
+          />
+        </a>
+
+        <nav class="nav" id="main-nav">
+          <a href="index.html#hero" class="nav-link">Home</a>
+          <a href="index.html#promo" class="nav-link">Promo</a>
+          <a href="menu.html" class="nav-link active-link">Semua Menu</a>
+          <a href="index.html#testimoni" class="nav-link">Ulasan</a>
+          <a href="#footer-info" class="nav-link">Lokasi</a>
+        </nav>
+
+        <div class="header-actions">
+          <button
+            id="cart-toggle-btn"
+            class="icon-btn header-cart-btn"
+            aria-label="Buka Keranjang"
+          >
+            <i data-lucide="shopping-cart"></i>
+            <span class="cart-badge" id="header-cart-badge">0</span>
+          </button>
+          <button
+            id="theme-toggle"
+            class="theme-toggle-btn"
+            aria-label="Toggle Theme"
+          >
+            <i data-lucide="moon" id="theme-icon"></i>
+          </button>
+          <button id="pwa-install-btn" class="btn btn-primary btn-sm hidden">
+            <i data-lucide="download" class="btn-icon"></i> Install App
+          </button>
+          <button
+            id="mobile-menu-btn"
+            class="mobile-menu-btn"
+            aria-label="Toggle Navigation"
+          >
+            <i data-lucide="menu"></i>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="menu-page-header" style="padding: 3rem 0 1rem 0;">
+        <div class="container text-center">
+          <h1 class="page-title" style="font-size: 2.2rem; margin: 0.5rem 0;">Pilih Menu Favoritmu</h1>
+          <p class="page-desc">
+            Tambahkan item pilihan Anda ke keranjang belanja dan pesan langsung melalui WhatsApp Direct Order.
+          </p>
+        </div>
+      </section>
+
+      <section id="menu" class="menu-section">
+        <div class="container">
+          <div class="menu-controls">
+            <div class="search-box">
+              <i data-lucide="search" class="search-icon"></i>
+              <input
+                type="text"
+                id="menu-search"
+                placeholder="Cari pizza, minuman, atau makanan pendamping..."
+                class="search-input"
+              />
+              <button
+                id="clear-search-btn"
+                class="clear-search-btn hidden"
+                aria-label="Hapus Pencarian"
+              >
+                &times;
+              </button>
+            </div>
+            <div class="filter-buttons" id="filter-buttons-container">
+              <button class="filter-btn active" data-category="all">
+                <i data-lucide="layout-grid" class="filter-icon"></i> Semua
+                (<span id="count-all">0</span>)
+              </button>
+              <button class="filter-btn" data-category="pizza">
+                <i data-lucide="pizza" class="filter-icon"></i> Pizza (<span
+                  id="count-pizza"
+                  >0</span
+                >)
+              </button>
+              <button class="filter-btn" data-category="drinks">
+                <i data-lucide="cup-soda" class="filter-icon"></i> Minuman
+                (<span id="count-drinks">0</span>)
+              </button>
+              <button class="filter-btn" data-category="sides">
+                <i data-lucide="utensils" class="filter-icon"></i> Side Dishes
+                (<span id="count-sides">0</span>)
+              </button>
+              <button class="filter-btn" data-category="wishlist-only">
+                <i data-lucide="heart" class="filter-icon"></i> Favorit (<span
+                  id="count-wishlist"
+                  >0</span
+                >)
+              </button>
+            </div>
+          </div>
+
+          <div id="menu-categories-wrapper"></div>
+
+          <div class="pagination-container" id="pagination"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer" id="footer-info">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-col">
+            <img
+              src="assets/logo/logo.webp"
+              alt="Dewiza Pizza Cafe Logo"
+              class="footer-logo"
+            />
+            <p class="footer-desc">
+              Menyajikan pizza autentik berkualitas tinggi, minuman segar, dan
+              makanan pendamping nikmat untuk momen kebersamaan Anda.
+            </p>
+            <div class="social-links">
+              <a
+                href="https://www.instagram.com/pizzadewiza?igsi=MTB0cDN1NzBqa3hjMw=="
+                target="_blank"
+                rel="noopener"
+                class="social-btn"
+              >
+                <i data-lucide="instagram" class="social-icon"></i> Instagram
+                @pizzadewiza
+              </a>
+              <a
+                href="https://wa.me/6282361193797"
+                target="_blank"
+                rel="noopener"
+                class="social-btn wa-btn"
+              >
+                <i data-lucide="phone" class="social-icon"></i> WhatsApp Order
+              </a>
+            </div>
+          </div>
+
+          <div class="footer-col">
+            <h3 class="footer-title">Jam Operasional</h3>
+            <ul class="footer-info-list">
+              <li><span>Senin - Kamis:</span> 11:00 - 22:00 WIB</li>
+              <li><span>Jumat:</span> 15:00 - 22:00 WIB</li>
+              <li><span>Sabtu - Minggu:</span> 11:00 - 22:00 WIB</li>
+              <li class="info-highlight-footer">Buka Setiap Hari</li>
+            </ul>
+
+            <h3 class="footer-title footer-title-sub">Kontak & Alamat</h3>
+            <p class="footer-address">
+              <i data-lucide="map-pin" class="info-icon"></i> Dewiza Pizza &
+              Cafe<br />Jl. Dr. Mr. Mohd Hasan, Blang Cut, Kec. Lueng Bata, Kota
+              Banda Aceh, Aceh 23248
+            </p>
+            <p class="footer-phone">
+              <i data-lucide="phone" class="info-icon"></i> WhatsApp:
+              082361193797
+            </p>
+          </div>
+
+          <div class="footer-col footer-col-map">
+            <h3 class="footer-title">Lokasi Kami</h3>
+            <div class="map-responsive">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d992.7885541251192!2d95.3297739284713!3d5.544138699650811!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x304037ee2779779f%3A0x652b1e9cbf933f66!2sDewiza%20Pizza%20%26%20Cafe!5e0!3m2!1sid!2sid!4v1787574309932!5m2!1sid!2sid"
+                width="600"
+                height="450"
+                style="border: 0"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="strict-origin-when-cross-origin"
+              ></iframe>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>&copy; 2026 Dewiza Pizza Cafe. Hak Cipta Dilindungi.</p>
+        </div>
+      </div>
+    </footer>
+
+    <div class="cart-drawer-overlay" id="cart-overlay"></div>
+    <div class="cart-drawer" id="cart-drawer">
+      <div class="cart-header">
+        <h3><i data-lucide="shopping-bag"></i> Keranjang Pesanan</h3>
+        <div class="cart-header-actions">
+          <button
+            class="btn btn-sm btn-outline-danger"
+            id="clear-cart-btn"
+            title="Kosongkan Keranjang"
+          >
+            Bersihkan
+          </button>
+          <button class="close-cart-btn" id="close-cart-btn">&times;</button>
+        </div>
+      </div>
+
+      <div class="cart-body" id="cart-body"></div>
+
+      <div class="cart-options-section">
+        <div>
+          <label style="font-size: 0.85rem; font-weight: 600; display: block; margin-bottom: 0.4rem;">Tipe Pesanan:</label>
+          <div class="order-type-selector">
+            <button class="type-btn active" data-type="dinein">Dine-In</button>
+            <button class="type-btn" data-type="takeaway">Takeaway</button>
+            <button class="type-btn" data-type="delivery">Delivery</button>
+          </div>
+        </div>
+
+        <div id="order-detail-input-wrapper">
+          <input
+            type="text"
+            id="order-location-input"
+            class="form-group-input"
+            placeholder="Nomor Meja (Contoh: Meja 05)..."
+          />
+        </div>
+
+        <div>
+          <label style="font-size: 0.85rem; font-weight: 600; display: block; margin-bottom: 0.4rem;">Kode Voucher / Promo:</label>
+          <div class="promo-code-wrapper">
+            <input
+              type="text"
+              id="promo-input"
+              class="form-group-input"
+              placeholder="Contoh: DEWIZA10"
+            />
+            <button class="btn btn-secondary btn-sm" id="apply-promo-btn">Gunakan</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="cart-footer">
+        <div class="cart-summary">
+          <span>Subtotal Item:</span>
+          <span id="cart-subtotal-price">Rp 0</span>
+        </div>
+        <div class="cart-summary discount-text" id="discount-row">
+          <span>Diskon Promo:</span>
+          <span id="cart-discount-price">- Rp 0</span>
+        </div>
+        <div class="cart-summary cart-total-price">
+          <span>Total Bayar:</span>
+          <strong id="cart-total-price">Rp 0</strong>
+        </div>
+        <button class="btn btn-primary btn-lg btn-block" id="checkout-wa-btn">
+          <i data-lucide="phone"></i> Kirim Pesanan ke WhatsApp
+        </button>
+      </div>
+    </div>
+
+    <div class="modal-overlay" id="quick-view-modal">
+      <div class="modal-content">
+        <button class="modal-close" id="modal-close-btn">&times;</button>
+        <div class="modal-body" id="modal-body"></div>
+      </div>
+    </div>
+
+    <button
+      id="floating-cart-btn"
+      class="floating-cart-btn"
+      aria-label="Keranjang Belanja"
+    >
+      <i data-lucide="shopping-bag"></i>
+      <span class="floating-cart-badge" id="floating-cart-badge">0</span>
+    </button>
+
+    <button
+      id="back-to-top"
+      class="back-to-top-btn"
+      aria-label="Kembali ke atas"
+    >
+      <i data-lucide="arrow-up"></i>
+    </button>
+
+    <div id="toast-container" class="toast-container"></div>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>
