@@ -1,190 +1,199 @@
-# Dewiza Pizza & Cafe — Production Complete v7
+# Dewiza Pizza & Cafe
 
-Website katalog dan pemesanan statis yang data-driven, responsif, PWA-ready, dan dapat dipasang di GitHub Pages, Vercel, Netlify, atau hosting HTTPS statis lain.
+Website resmi katalog dan pemesanan digital Dewiza Pizza & Cafe untuk digunakan langsung oleh pelanggan dan operasional cafe.
 
-## Menjalankan project
+Website ini menampilkan menu, informasi toko, promo, ulasan, jam operasional, keranjang belanja, voucher, serta pemesanan melalui WhatsApp. Tampilan sudah responsif untuk HP, tablet, laptop, dan perangkat kasir/cafe.
 
-```bash
-python -m http.server 8000
-```
+## Fitur Pelanggan
 
-Buka `http://localhost:8000`.
+### Beranda Toko
+- Menampilkan identitas Dewiza Pizza & Cafe.
+- Hero/banner toko.
+- Status buka atau tutup berdasarkan jam operasional.
+- Informasi promo dan pengumuman toko jika tersedia.
+- Menu pilihan dari data menu aktif.
+- Ulasan pelanggan jika tersedia.
+- Informasi alamat, kontak, Instagram, WhatsApp, dan lokasi.
 
-`fetch()` dipakai untuk membaca JSON, jadi jangan membuka `index.html` langsung dengan `file://`.
+### Katalog Menu
+- Menampilkan seluruh menu Dewiza Pizza & Cafe.
+- Pencarian menu secara langsung.
+- Saran pencarian otomatis.
+- Filter berdasarkan kategori.
+- Filter menu tersedia.
+- Filter rentang harga.
+- Urutkan berdasarkan nama dan harga.
+- Pagination untuk katalog berisi banyak produk.
+- Detail menu melalui quick view.
+- Informasi harga, deskripsi, kategori, badge, tag, alergen, kalori, dan level pedas jika tersedia.
+- Menu yang sedang habis tetap dapat ditampilkan tetapi tidak bisa dimasukkan ke keranjang.
+- Link kategori atau produk tertentu dapat dibagikan langsung.
 
-## Data utama
+### Favorit dan Riwayat
+- Pelanggan dapat menyimpan menu favorit.
+- Favorit tetap tersimpan pada perangkat pelanggan.
+- Riwayat menu yang terakhir dilihat dapat ditampilkan.
+- Riwayat dapat dihapus kapan saja.
 
-- `assets/data/site.json`: identitas usaha, kategori, jam, tipe pesanan, promo, ulasan, voucher, dan settings.
-- `assets/data/menu.json`: seluruh produk/menu.
+### Keranjang Pesanan
+- Tambah menu ke keranjang.
+- Tambah atau kurangi jumlah pesanan.
+- Batas jumlah per produk mengikuti pengaturan toko.
+- Menampilkan subtotal, voucher, biaya layanan/pengantaran jika ada, dan total akhir.
+- Produk yang sudah tidak tersedia akan dibersihkan dari keranjang secara aman.
+- Isi keranjang tetap tersimpan pada perangkat pelanggan.
+- Ringkasan pesanan dapat disalin atau dibagikan.
 
-Fresh project tidak membuat produk, promo, ulasan, atau voucher contoh. `menu.json` default adalah `[]`.
+### Jenis Pesanan
+Jenis pesanan mengikuti layanan yang diaktifkan toko, misalnya:
+- Dine In.
+- Take Away.
+- Delivery.
 
-## Fitur lengkap
+Setiap jenis pesanan dapat memiliki:
+- Keterangan tambahan.
+- Alamat atau nomor meja.
+- Biaya layanan.
+- Persyaratan pengisian data.
 
-### UI/UX dan responsive
-- Header desktop/tablet yang ringkas.
-- Bottom navigation mobile fixed di viewport dengan ikon Lucide lokal + label.
-- Theme, Install PWA, dan Cart tetap di header atas mobile.
-- Safe-area iPhone, breakpoint 1020/820/620/420, dark/light mode, reduced motion.
-- Skeleton loading, empty state, retry state, toast, back-to-top.
-- Sticky search/sort toolbar dan mobile layout tanpa floating cart duplikat.
+### Pemesanan WhatsApp
+- Pelanggan mengisi nama pemesan jika diaktifkan.
+- Pelanggan dapat menambahkan catatan pesanan.
+- Validasi pesanan dilakukan sebelum WhatsApp dibuka.
+- Pesanan memiliki nomor referensi otomatis.
+- Rincian menu, jumlah, subtotal, voucher, biaya, total, jenis pesanan, dan detail pelanggan dimasukkan ke pesan WhatsApp.
+- Nomor WhatsApp tujuan berasal dari data resmi toko.
+- Pesanan tidak dapat dilanjutkan jika data penting belum lengkap.
 
-### Katalog
-- Search realtime + autocomplete dari data menu aktual dengan navigasi keyboard.
-- Filter kategori + jumlah item.
-- Favorite filter.
-- Sorting harga/nama.
-- Advanced filter: tersedia saja + harga minimum/maksimum, tersinkron ke URL.
-- Pagination.
-- Quick view modal.
-- Share produk + copy link.
-- URL state: `category`, `q`, `sort`, `page`, `item`.
-- Reset filter dan share URL katalog aktif.
-- Recently viewed tersimpan di `localStorage` + tombol hapus riwayat.
-- Metadata produk opsional: tag, alergen, kalori, level pedas, featured.
-- Validasi data: item invalid dan ID duplikat diabaikan dengan aman.
-- Produk unavailable tetap terlihat tetapi tidak dapat ditambahkan ke cart.
+### Jadwal Pesanan
+Jika fitur jadwal diaktifkan oleh cafe:
+- Pelanggan dapat memilih tanggal dan waktu pesanan.
+- Jadwal mengikuti jam operasional toko.
+- Cafe dapat menentukan waktu minimum pemesanan sebelum jadwal.
+- Cafe dapat menentukan batas maksimal hari pemesanan ke depan.
 
+### Voucher dan Promo
+- Voucher hanya muncul dan berlaku jika dibuat oleh toko.
+- Mendukung potongan nominal atau persentase.
+- Dapat memiliki minimum pembelian.
+- Dapat memiliki maksimum potongan.
+- Dapat memiliki masa berlaku.
+- Voucher yang tidak aktif atau sudah kedaluwarsa tidak dapat digunakan.
 
-### Informasi operasional
-- Status Buka/Tutup dihitung dari `openingHoursMachine` + timezone bisnis.
-- Announcement banner berasal dari `announcements`; array kosong tidak menampilkan apa pun.
-- Tidak ada konten announcement fallback.
+## Fitur Operasional Cafe
 
-### Favorite dan Cart
-- Favorite persistence `localStorage`.
-- Cart persistence `localStorage`.
-- Quantity control dengan `maxCartQuantity` configurable.
-- Cart membersihkan item yang sudah tidak ada/tidak tersedia saat katalog berubah.
-- Subtotal, voucher, biaya order type opsional, total.
-- Clear cart dan badge quantity.
-- Salin/bagikan ringkasan pesanan langsung dari cart.
+### Pengelolaan Menu
+Seluruh menu disimpan pada `assets/data/menu.json`.
 
-### Checkout WhatsApp
-- Validasi nomor WhatsApp format kode negara.
-- Validasi cart, quantity, harga, availability, tipe order, detail/alamat, dan panjang pesan.
-- Dine-in / Take Away / Delivery berasal dari JSON.
-- Detail order dapat required per tipe.
-- Biaya per tipe order opsional melalui `fee`.
-- Nama pemesan dan catatan order opsional.
-- Draft tipe/detail/nama/catatan/jadwal tersimpan di `localStorage`.
-- Scheduled order opsional dan configurable; default nonaktif sampai bisnis mengaktifkannya.
-- Referensi order otomatis dimasukkan ke pesan WhatsApp.
-- Voucher mendukung `minOrder`, `maxDiscount`, `expiresAt`, fixed/percent dan kode voucher aktif ikut tersimpan pada draft.
-- Minimum order dan pemblokiran order di luar jam buka dapat diaktifkan dari settings.
+Data menu dapat mencakup:
+- Nama menu.
+- Kategori.
+- Harga.
+- Deskripsi.
+- Foto.
+- Status tersedia/habis.
+- Badge.
+- Tag.
+- Informasi alergen.
+- Kalori.
+- Level pedas.
+- Status menu unggulan.
 
-### PWA dan Offline
-- Manifest lengkap, icons, standalone mode, shortcuts.
-- Shortcut buka Menu dan buka Keranjang.
-- Install prompt.
-- Install state otomatis disembunyikan ketika app sudah standalone.
-- Service Worker versioned cache.
-- PWA update banner, update hanya aktif setelah pengguna menekan Perbarui.
-- Offline navigation fallback.
-- Network-first untuk JSON menu/config.
-- Cache katalog terakhir + fallback `localStorage`.
-- Cache gambar menu lokal untuk offline.
-- Runtime cache memiliki batas entry agar tidak tumbuh tanpa batas.
-- Badge offline ketika koneksi terputus.
-- Timestamp cache lokal untuk memberi konteks umur katalog terakhir saat offline.
+Project tidak membuat menu contoh secara otomatis. Jika belum ada menu, katalog menampilkan kondisi kosong tanpa data palsu.
 
-### SEO
-- Canonical.
-- Description dan robots.
-- Open Graph.
-- Twitter Card.
-- Schema.org Restaurant/Menu/MenuSection/MenuItem + OpeningHoursSpecification + nutrition/keywords opsional.
-- SEO dinamis kategori dan deep-link produk.
-- `robots.txt` dan `sitemap.xml`.
-- 404 GitHub Pages dengan recovery `/menu` ke `menu.html`.
+### Pengelolaan Informasi Toko
+Informasi toko disimpan pada `assets/data/site.json`, termasuk:
+- Nama Dewiza Pizza & Cafe.
+- Logo dan foto utama.
+- Nomor WhatsApp.
+- Instagram.
+- Alamat.
+- Lokasi/map.
+- Jam operasional.
+- Kategori menu.
+- Jenis pesanan.
+- Biaya layanan.
+- Voucher.
+- Promo.
+- Ulasan.
+- Pengumuman.
+- Pengaturan pemesanan.
 
-### Accessibility
-- Skip link.
-- `aria-current` navigation.
-- `aria-live` result count/toast/network state.
-- Focus trap cart/modal.
-- Restore focus.
-- Escape close.
-- Keyboard `/` untuk fokus ke search dan `C` untuk membuka cart saat tidak sedang mengetik.
-- Combobox/listbox ARIA untuk suggestion pencarian.
-- Focus-visible dan reduced motion.
+### Jam Operasional
+- Website dapat menampilkan status Buka/Tutup secara otomatis.
+- Jam operasional digunakan untuk informasi pelanggan dan validasi pesanan.
+- Cafe dapat memilih apakah pesanan tetap diperbolehkan ketika toko tutup.
+- Scheduled order dapat tetap digunakan jika diaktifkan dan jadwalnya valid.
 
-## Format menu
+### Informasi Ketersediaan Menu
+- Menu tersedia dapat langsung dipesan.
+- Menu habis dapat tetap terlihat sebagai informasi pelanggan.
+- Menu habis tidak dapat dimasukkan ke keranjang.
+- Status ketersediaan dapat diubah pada data menu tanpa mengubah tampilan website.
 
-```json
-{
-  "id": "id-unik-dan-stabil",
-  "name": "Nama menu",
-  "category": "pizza",
-  "price": 50000,
-  "description": "Deskripsi menu",
-  "image": "assets/menu/nama-file.webp",
-  "available": true,
-  "badge": "",
-  "tags": [],
-  "allergens": [],
-  "calories": null,
-  "spicyLevel": 0,
-  "featured": false
-}
-```
+## Aplikasi Cafe / PWA
 
-`id`, `name`, `category`, dan `price` wajib valid. ID harus unik dan stabil karena dipakai cart, favorite, recently viewed, SEO, dan deep-link.
+Website dapat dipasang ke layar utama perangkat yang mendukung instalasi web app.
 
-## Order type dengan biaya opsional
+Fitur aplikasi:
+- Tampilan seperti aplikasi mandiri.
+- Shortcut langsung ke Menu.
+- Shortcut langsung ke Keranjang.
+- Notifikasi jika versi website baru tersedia.
+- Katalog terakhir tetap dapat dibuka ketika koneksi terganggu.
+- Gambar menu yang pernah dimuat dapat tersedia saat offline.
+- Indikator offline tampil ketika perangkat kehilangan koneksi.
 
-```json
-{
-  "id": "delivery",
-  "label": "Delivery",
-  "detailLabel": "Alamat pengiriman",
-  "detailPlaceholder": "Masukkan alamat pengiriman lengkap",
-  "required": true,
-  "fee": 0
-}
-```
+## Tampilan dan Kenyamanan Pelanggan
 
-`fee` opsional. Jika tidak ditulis, nilainya dianggap `0`.
+- Responsif untuk mobile, tablet, desktop, dan perangkat cafe.
+- Bottom navigation tetap di bawah layar pada mobile.
+- Header mobile berisi Theme, Install, dan Cart.
+- Dark mode dan light mode.
+- Skeleton loading saat katalog sedang dibaca.
+- Empty state ketika belum ada menu atau hasil filter kosong.
+- Retry jika katalog gagal dimuat.
+- Toast untuk informasi tindakan pelanggan.
+- Tombol kembali ke atas.
+- Safe-area untuk perangkat iPhone.
 
-## Voucher
+## Aksesibilitas
 
-```json
-{
-  "code": "KODE",
-  "type": "percent",
-  "value": 10,
-  "minOrder": 50000,
-  "maxDiscount": 20000,
-  "expiresAt": "2026-12-31T23:59:59+07:00",
-  "active": true
-}
-```
+Website dirancang agar lebih mudah digunakan melalui sentuhan maupun keyboard:
+- Fokus keyboard yang jelas.
+- Navigasi aktif yang terbaca pembaca layar.
+- Modal dan keranjang menjaga fokus di dalam panel aktif.
+- Tombol Escape menutup modal atau keranjang.
+- Pencarian dapat diakses cepat melalui keyboard.
+- Dukungan reduced motion.
+- Informasi hasil, jaringan, dan notifikasi dapat diumumkan ke pembaca layar.
 
-Semua voucher tetap berasal dari `site.json`. Tidak ada voucher otomatis.
+## Informasi Pencarian Google dan Media Sosial
 
-## Settings tambahan
+Website memiliki metadata yang membantu halaman Dewiza Pizza & Cafe tampil lebih baik ketika ditemukan atau dibagikan:
+- Judul dan deskripsi halaman.
+- Informasi restoran.
+- Informasi menu dan kategori.
+- Jam operasional.
+- Informasi produk tertentu saat link menu dibagikan.
+- Preview untuk media sosial.
+- Sitemap dan robots.
 
-- `maxCartQuantity`
-- `enableRecentlyViewed`
-- `recentlyViewedLimit`
-- `enableKeyboardShortcuts`
-- `customerNameMaxLength`
-- `orderNoteMaxLength`
-- `orderDetailMaxLength`
-- `deliveryAddressMinLength`
-- `enableAdvancedFilters`
-- `enableSearchSuggestions` / `searchSuggestionLimit`
-- `enableOrderSchedule` / `orderScheduleLeadMinutes` / `orderScheduleDaysAhead`
-- `enableOrderSummaryShare`
-- `minimumOrderAmount`
-- `blockOrderingWhenClosed`
+## Data Kosong Tetap Aman
 
-## Struktur
+Website tidak membuat data contoh otomatis.
 
-Lihat `docs/ARCHITECTURE.md` dan `docs/CONFIGURATION.md`.
+Jika toko belum mengisi data tertentu:
+- Menu kosong menampilkan empty state.
+- Promo kosong tidak menampilkan bagian promo.
+- Ulasan kosong tidak menampilkan bagian ulasan.
+- Voucher kosong tidak membuat voucher otomatis.
+- Pengumuman kosong tidak menampilkan banner.
 
-## Deployment
+Dengan demikian, hanya data resmi Dewiza Pizza & Cafe yang tampil kepada pelanggan.
 
-Gunakan HTTPS untuk PWA. Jika domain final berbeda dari `dewizapizzacafe.com`, ubah URL di `robots.txt` dan `sitemap.xml` sebelum indexing publik.
+## Dokumen Operasional
 
-Setelah mengubah logic cache penting, naikkan `CACHE_VERSION` di `sw.js`. Versi paket ini menggunakan cache production v7.
+- `docs/FITUR_TOKO.md` — ringkasan seluruh fitur yang tersedia untuk pelanggan dan cafe.
+- `docs/PENGELOLAAN_DATA_TOKO.md` — panduan mengisi menu, jam buka, layanan, voucher, promo, ulasan, dan pengaturan toko.
+- `docs/OPERASIONAL_CAFE.md` — panduan penggunaan website dalam kegiatan cafe sehari-hari.
