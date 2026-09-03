@@ -1,33 +1,67 @@
-<!DOCTYPE html>
-<html lang="id">
+<!doctype html>
+<html lang="id" data-theme="light">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>404 Halaman Tidak Ditemukan - Dewiza Pizza Cafe</title>
-  <link rel="stylesheet" href="css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#d92d20">
+  <meta name="robots" content="noindex,follow">
+  <meta name="color-scheme" content="light dark">
+  <title>Halaman Tidak Ditemukan - Dewiza Pizza & Cafe</title>
   <style>
-    .error-wrapper {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 2rem;
-    }
-    .error-code {
-      font-size: 5rem;
-      font-weight: 700;
-      color: var(--color-primary);
-    }
+    :root{color-scheme:light dark;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;--p:#d92d20;--bg:#fffdf9;--s:#fff;--t:#1d2939;--m:#667085;--b:#eaecf0}
+    @media(prefers-color-scheme:dark){:root{--p:#f97066;--bg:#0c111d;--s:#161b26;--t:#f2f4f7;--m:#98a2b3;--b:#333741}}
+    *{box-sizing:border-box}body{margin:0;min-width:320px;background:var(--bg);color:var(--t)}main{min-height:100dvh;display:grid;place-items:center;padding:24px;background:radial-gradient(circle at 50% 0,color-mix(in srgb,var(--p) 10%,transparent),transparent 45%)}.card{width:min(600px,100%);padding:42px;border:1px solid var(--b);border-radius:24px;background:var(--s);box-shadow:0 24px 60px rgba(16,24,40,.12);text-align:center}.code{color:var(--p);font-size:clamp(4rem,18vw,7rem);font-weight:800;line-height:1;letter-spacing:-.07em}h1{margin:14px 0 8px;font-size:clamp(1.5rem,6vw,2rem)}p{margin:0 auto 24px;max-width:460px;color:var(--m);line-height:1.65}.actions{display:flex;justify-content:center;flex-wrap:wrap;gap:10px}a{min-height:44px;display:inline-flex;align-items:center;justify-content:center;padding:10px 16px;border:1px solid var(--b);border-radius:12px;color:var(--t);font-weight:700;text-decoration:none}.primary{border-color:var(--p);background:var(--p);color:#fff}.path{margin-top:18px;font-size:.78rem;color:var(--m);overflow-wrap:anywhere}@media(max-width:520px){.card{padding:32px 20px}.actions{display:grid}.actions a{width:100%}}
   </style>
 </head>
 <body>
-  <div class="error-wrapper">
-    <div class="error-code">404</div>
-    <h2>Halaman Tidak Ditemukan</h2>
-    <p>Halaman yang Anda cari tidak tersedia atau telah dipindahkan.</p>
-    <a href="index.html" class="btn btn-primary" style="margin-top: 1.5rem;">Kembali ke Beranda</a>
-  </div>
+  <main>
+    <section class="card" aria-labelledby="error-title">
+      <div class="code" aria-hidden="true">404</div>
+      <h1 id="error-title">Halaman tidak ditemukan</h1>
+      <p>Alamat yang dibuka tidak tersedia. Gunakan tombol di bawah untuk kembali ke halaman yang valid.</p>
+      <div class="actions">
+        <a id="home-link" class="primary" href="./">Kembali ke beranda</a>
+        <a id="menu-link" href="./menu.html">Buka menu</a>
+      </div>
+      <div id="requested-path" class="path"></div>
+    </section>
+  </main>
+  <script>
+    (() => {
+      const path = location.pathname;
+      const parts = path.split('/').filter(Boolean);
+      const candidates = ['/'];
+      if (location.hostname.endsWith('github.io') && parts.length > 1) candidates.push(`/${parts[0]}/`);
+      const unique = [...new Set(candidates.reverse())];
+
+      async function hasManifest(base) {
+        try {
+          const response = await fetch(`${base}manifest.json`, { cache: 'no-store' });
+          if (!response.ok) return false;
+          const data = await response.json();
+          return Boolean(data && typeof data.name === 'string');
+        } catch { return false; }
+      }
+
+      async function detectBase() {
+        for (const base of unique) if (await hasManifest(base)) return base;
+        if (location.hostname.endsWith('github.io') && parts.length > 1) return `/${parts[0]}/`;
+        return '/';
+      }
+
+      detectBase().then(base => {
+        const relative = path.startsWith(base) ? path.slice(base.length).replace(/^\/+|\/+$/g, '') : parts.at(-1) || '';
+        if (relative === 'menu') {
+          location.replace(`${base}menu.html${location.search}${location.hash}`);
+          return;
+        }
+        document.getElementById('home-link').href = base;
+        document.getElementById('menu-link').href = `${base}menu.html`;
+      });
+
+      const shown = `${location.pathname}${location.search}`;
+      document.getElementById('requested-path').textContent = shown;
+    })();
+  </script>
 </body>
 </html>

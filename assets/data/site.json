@@ -1,0 +1,125 @@
+{
+  "business": {
+    "name": "Dewiza Pizza & Cafe",
+    "shortName": "Dewiza Pizza",
+    "description": "Katalog menu dan pemesanan Dewiza Pizza & Cafe.",
+    "logo": "assets/logo/logo.webp",
+    "heroImage": "assets/hero/hero-bg.webp",
+    "whatsapp": "6282361193797",
+    "instagramUrl": "https://www.instagram.com/pizzadewiza?igsi=MTB0cDN1NzBqa3hjMw==",
+    "instagramLabel": "@pizzadewiza",
+    "address": "Jl. Dr. Mr. Mohd Hasan, Blang Cut, Kec. Lueng Bata, Kota Banda Aceh, Aceh 23248",
+    "mapEmbedUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d992.7885541251192!2d95.3297739284713!3d5.544138699650811!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x304037ee2779779f%3A0x652b1e9cbf933f66!2sDewiza%20Pizza%20%26%20Cafe!5e0!3m2!1sid!2sid!4v1787574309932!5m2!1sid!2sid",
+    "locale": "id-ID",
+    "currency": "IDR",
+    "timeZone": "Asia/Jakarta"
+  },
+  "openingHours": [
+    {
+      "label": "Senin - Kamis",
+      "value": "11:00 - 22:00 WIB"
+    },
+    {
+      "label": "Jumat",
+      "value": "15:00 - 22:00 WIB"
+    },
+    {
+      "label": "Sabtu - Minggu",
+      "value": "11:00 - 22:00 WIB"
+    }
+  ],
+  "categories": [
+    {
+      "id": "pizza",
+      "label": "Pizza",
+      "icon": "pizza"
+    },
+    {
+      "id": "drinks",
+      "label": "Minuman",
+      "icon": "cup-soda"
+    },
+    {
+      "id": "sides",
+      "label": "Side Dishes",
+      "icon": "utensils"
+    }
+  ],
+  "orderTypes": [
+    {
+      "id": "dinein",
+      "label": "Dine In",
+      "detailLabel": "Nomor meja",
+      "detailPlaceholder": "Masukkan nomor meja",
+      "required": false
+    },
+    {
+      "id": "takeaway",
+      "label": "Take Away",
+      "detailLabel": "Nama pemesan",
+      "detailPlaceholder": "Masukkan nama pemesan",
+      "required": false
+    },
+    {
+      "id": "delivery",
+      "label": "Delivery",
+      "detailLabel": "Alamat pengiriman",
+      "detailPlaceholder": "Masukkan alamat pengiriman lengkap",
+      "required": true
+    }
+  ],
+  "promos": [],
+  "testimonials": [],
+  "vouchers": [],
+  "settings": {
+    "menuPreviewLimit": 6,
+    "menuPageSize": 12,
+    "enableWishlist": true,
+    "enableOrdering": true,
+    "orderDetailMaxLength": 300,
+    "deliveryAddressMinLength": 10,
+    "maxCartQuantity": 99,
+    "enableRecentlyViewed": true,
+    "recentlyViewedLimit": 6,
+    "enableKeyboardShortcuts": true,
+    "customerNameMaxLength": 80,
+    "orderNoteMaxLength": 300,
+    "enableAdvancedFilters": true,
+    "enableSearchSuggestions": true,
+    "searchSuggestionLimit": 6,
+    "enableOrderSchedule": false,
+    "orderScheduleLeadMinutes": 30,
+    "orderScheduleDaysAhead": 7,
+    "enableOrderSummaryShare": true,
+    "minimumOrderAmount": 0,
+    "blockOrderingWhenClosed": false
+  },
+  "openingHoursMachine": [
+    {
+      "days": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "open": "11:00",
+      "close": "22:00"
+    },
+    {
+      "days": [
+        5
+      ],
+      "open": "15:00",
+      "close": "22:00"
+    },
+    {
+      "days": [
+        6,
+        0
+      ],
+      "open": "11:00",
+      "close": "22:00"
+    }
+  ],
+  "announcements": []
+}

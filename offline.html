@@ -1,32 +1,21 @@
-<!DOCTYPE html>
-<html lang="id">
+<!doctype html>
+<html lang="id" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Offline - Dewiza Pizza Cafe</title>
+  <meta name="theme-color" content="#d92d20">
+  <title>Offline - Dewiza Pizza & Cafe</title>
+  <link rel="icon" href="favicon.png" type="image/png">
   <link rel="stylesheet" href="css/style.css">
-  <style>
-    .offline-wrapper {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 2rem;
-    }
-    .offline-title {
-      font-size: 2rem;
-      color: var(--color-primary);
-      margin-bottom: 1rem;
-    }
-  </style>
 </head>
 <body>
-  <div class="offline-wrapper">
-    <h1 class="offline-title">Koneksi Terputus</h1>
-    <p>Anda sedang berada dalam mode offline. Silakan periksa jaringan internet Anda untuk kembali ke aplikasi Dewiza Pizza Cafe.</p>
-    <a href="index.html" class="btn btn-primary" style="margin-top: 1.5rem;">Coba Lagi</a>
-  </div>
+  <main class="error-page">
+    <section class="error-card">
+      <div class="error-code">Offline</div>
+      <h1>Koneksi tidak tersedia</h1>
+      <p>Periksa koneksi internet, lalu coba buka kembali halaman ini.</p>
+      <a href="index.html" class="btn btn-primary">Coba lagi</a>
+    </section>
+  </main>
 </body>
 </html>

@@ -1,26 +1,64 @@
 {
-  "name": "Dewiza Pizza Cafe",
+  "name": "Dewiza Pizza & Cafe",
   "short_name": "Dewiza Pizza",
+  "description": "Katalog menu dan pemesanan Dewiza Pizza & Cafe.",
   "start_url": "./index.html",
+  "scope": "./",
   "display": "standalone",
-  "background_color": "#FAFAF9",
-  "theme_color": "#F90B0C",
-  "orientation": "portrait-primary",
+  "background_color": "#fffdf9",
+  "theme_color": "#d92d20",
+  "orientation": "any",
   "icons": [
     {
       "src": "assets/icons/icon-192x192.png",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     },
     {
       "src": "assets/icons/icon-512x512.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     },
     {
       "src": "assets/icons/apple-touch-icon.png",
       "sizes": "180x180",
       "type": "image/png"
     }
-  ]
+  ],
+  "id": "./",
+  "lang": "id-ID",
+  "dir": "ltr",
+  "categories": [
+    "food",
+    "shopping"
+  ],
+  "shortcuts": [
+    {
+      "name": "Lihat Menu",
+      "short_name": "Menu",
+      "url": "./menu.html",
+      "icons": [
+        {
+          "src": "assets/icons/icon-192x192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Buka Keranjang",
+      "short_name": "Keranjang",
+      "url": "./menu.html?cart=open",
+      "icons": [
+        {
+          "src": "assets/icons/icon-192x192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    }
+  ],
+  "prefer_related_applications": false
 }
